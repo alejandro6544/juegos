@@ -233,25 +233,36 @@ public class RegistroUsuario extends javax.swing.JFrame {
         String apellidou1 = jTextField5.getText();
         String apellidou2 = jTextField4.getText();
         String correou = jTextField6.getText();
-        char c[]=jPasswordField1.getPassword();
-        String d="";
-        for (int i = 0; i < c.length; i++) {
-            d += String.valueOf(c[i]);
-            //System.out.println("cc "+d);
-        }
-        String contraseniau = d;
-        System.out.println("esta es la con: " + contraseniau);
+        char contrasenia1[] = jPasswordField1.getPassword();
+        char contrasenia2[] = jPasswordField2.getPassword();
         String celularu = jTextField9.getText();
         boolean adminu = true;
-
-        BaseDatos objb = new BaseDatos();
-        Usuario obju = new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraseniau, celularu, adminu);
-        boolean insertU = objb.insertarUsuarioJ(obju);
-        if (insertU) {
-            JOptionPane.showMessageDialog(rootPane, "El usuario se inserto correctamente");
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "El usuario NO se inserto!!!!");
+        String contrasenia = "";
+        String contrasenia22 = "";
+        for (int i = 0; i < contrasenia1.length; i++) {
+            contrasenia += String.valueOf(contrasenia1[i]);
+            //System.out.println("cc "+d);
         }
+        for (int j = 0; j < contrasenia2.length; j++) {
+            contrasenia22 += String.valueOf(contrasenia2[j]);
+            //System.out.println("cc "+d);
+        }
+
+        boolean validarC = validarContrasenia(contrasenia, contrasenia22);
+        if (validarC) {
+            String contraEncriptada = utilidades.UtilitiesJ.Encriptar(contrasenia);
+            BaseDatos objb = new BaseDatos();
+            Usuario obju = new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraEncriptada, celularu, adminu);
+            boolean insertU = objb.insertarUsuarioJ(obju);
+            if (insertU) {
+                JOptionPane.showMessageDialog(rootPane, "El usuario se inserto correctamente");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "El usuario NO se inserto!!!!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "La contraseña no es igual, intente nuevamente");
+        }
+    
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -328,4 +339,12 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validarContrasenia(String contrasenia, String contrasenia22) {
+        boolean v = false;
+        if (contrasenia.equals(contrasenia22)) {
+            v = true;
+        }
+        return v;
+    }
 }
