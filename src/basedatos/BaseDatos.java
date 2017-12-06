@@ -85,24 +85,35 @@ public class BaseDatos {
      * @return resultado regresa los registros generados por la consulta
      *
      */
-    public String ejecutarSQLSelect(String sql) {
+    public Usuario ejecutarSQLSelect(String sql) {
         ResultSet rs;
-        int id;
-        String nom = "";
-        String tel = "";
-        String dir = "";
-        String concatenar = "";
+        String idu;
+        String nombre1u;
+        String nombre2u;
+        String apellidou1;
+        String apellidou2;
+        String correou;
+        String contraseniau;
+       // System.out.println("esta es la con: "+contraseniau);
+        String celularu;
+        boolean adminu=true;
+        Usuario obj=null;
 
         try {
             Statement sentencia = conexion.createStatement();
             rs = sentencia.executeQuery(sql);
             while (rs.next()) {
-                id = rs.getInt(1);
-                nom = rs.getNString("nombreusuario");
-                tel = rs.getNString("cedulausuario");
-                dir = rs.getNString("celusuario");
+                idu = rs.getNString("idU");
+                nombre1u = rs.getNString("nombreu1");
+                nombre2u = rs.getNString("nombreu2");
+                apellidou1 = rs.getNString("apellidou1");
+                apellidou2 = rs.getNString("apellidou2");
+                correou = rs.getNString("correou");
+                contraseniau = rs.getNString("contraseniau");
+                celularu = rs.getNString("celularu");
+                adminu = rs.getBoolean("adminu");
 
-                concatenar = id + " " + nom + " " + tel + " " + dir;
+                obj=new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraseniau, celularu, adminu);
             }
 
         } catch (SQLException ex) {
@@ -110,7 +121,7 @@ public class BaseDatos {
             return null;
         }
 
-        return concatenar;
+        return obj;
     }
 
 //    public boolean UpdateEstudiante(Estudiante estudiantemod, Imagen imagen) throws SQLException, IOException {
