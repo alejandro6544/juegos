@@ -5,6 +5,12 @@
  */
 package vista;
 
+import basedatos.BaseDatos;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+
 /**
  *
  * @author dacastro
@@ -16,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -60,6 +67,11 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Olvide Mi Contraseña");
 
         jLabel5.setText("Registrarse");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,12 +102,10 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(106, 106, 106)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,11 +136,47 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        
-        
+        char contrasenia[] = jPasswordField1.getPassword();
+        String id = jTextField1.getText();
+        String contrasenia1 = "";
+        for (int i = 0; i < contrasenia.length; i++) {
+            contrasenia1 += String.valueOf(contrasenia[i]);
+            //System.out.println("cc "+d);
+        }
+        BaseDatos objb = new BaseDatos();
+        String s = "Select * from usuarios where idU=" + "'" + id + "';";
+        Usuario u = null;
+        if (objb.crearConexion()) {
+            try {
+                u = objb.ejecutarSQLSelect(s);
+                if (u != null) {
+                    String contraseniabd = u.getContraseniau();//Trae la contraseña encriptada
+                    String contraDesencriptada = utilidades.UtilitiesJ.Desencriptar(contraseniabd); //desencripta la contraseña
+
+                    //Saber si es un usuario o un administrador true para admin y false para usuario
+                    boolean admin = u.isAdminu();
+                    System.out.println("aaa " + admin);
+
+                    //se compara la contraseña 
+                    if (contraDesencriptada.equals(contrasenia1)) {
+                        MenuUsuario obj = new MenuUsuario();
+                        obj.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Contraseña incorrecta!!");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrectos ");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        RegistroUsuario objr = new RegistroUsuario();
+        objr.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
