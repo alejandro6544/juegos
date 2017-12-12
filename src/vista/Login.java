@@ -65,6 +65,11 @@ public class Login extends javax.swing.JFrame {
         jButton2.setText("Cancelar");
 
         jLabel4.setText("Olvide Mi Contraseña");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel5.setText("Registrarse");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,6 +182,12 @@ public class Login extends javax.swing.JFrame {
         RegistroUsuario objr = new RegistroUsuario();
         objr.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        OlvidarContrasenia obj= new OlvidarContrasenia();
+        obj.setVisible(true);
+                
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
