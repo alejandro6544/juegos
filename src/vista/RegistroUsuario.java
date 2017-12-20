@@ -21,6 +21,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     public RegistroUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -61,31 +62,31 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel1.setText("Registro de usuarios");
 
         jLabel2.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel2.setText("Identificación");
+        jLabel2.setText("Identificación  *");
 
         jLabel3.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel3.setText("Primer Nombre");
+        jLabel3.setText("Primer Nombre   *");
 
         jLabel4.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         jLabel4.setText("Segundo Nombre");
 
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel5.setText("Primer Apellido");
+        jLabel5.setText("Primer Apellido   *");
 
         jLabel6.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         jLabel6.setText("Segundo Apellido");
 
         jLabel7.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel7.setText("Correo");
+        jLabel7.setText("Correo   *");
 
         jLabel8.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel8.setText("Contraseña");
+        jLabel8.setText("Contraseña   *");
 
         jLabel9.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel9.setText("Repita Contraseña");
+        jLabel9.setText("Repita Contraseña   *");
 
         jLabel10.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
-        jLabel10.setText("Celular");
+        jLabel10.setText("Celular   *");
 
         jButton1.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         jButton1.setText("Registrar");
@@ -111,9 +112,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(331, 331, 331)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -139,29 +139,26 @@ public class RegistroUsuario extends javax.swing.JFrame {
                             .addGap(59, 59, 59)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(73, 73, 73)
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jPasswordField1)))))
-                .addGap(114, 114, 114))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGap(38, 38, 38)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                .addComponent(jPasswordField1))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(344, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(208, 208, 208)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,7 +202,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -249,21 +246,26 @@ public class RegistroUsuario extends javax.swing.JFrame {
             //System.out.println("cc "+d);
         }
 
-        boolean validarC = validarContrasenia(contrasenia, contrasenia22);
-        if (validarC) {
-            String contraEncriptada = utilidades.UtilitiesJ.Encriptar(contrasenia);
-            BaseDatos objb = new BaseDatos();
-            Usuario obju = new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraEncriptada, celularu, adminu);
-            boolean insertU = objb.insertarUsuarioJ(obju);
-            if (insertU) {
-                JOptionPane.showMessageDialog(rootPane, "El usuario se inserto correctamente");
+        if (validarCampos()) {
+
+            boolean validarC = validarContrasenia(contrasenia, contrasenia22);
+            if (validarC) {
+                String contraEncriptada = utilidades.UtilitiesJ.Encriptar(contrasenia);
+                BaseDatos objb = new BaseDatos();
+                Usuario obju = new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraEncriptada, celularu, adminu);
+                boolean insertU = objb.insertarUsuarioJ(obju);
+                if (insertU) {
+                    JOptionPane.showMessageDialog(rootPane, "El usuario se inserto correctamente");
+                    limpiar();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "El usuario NO se inserto!!!!");
+                }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "El usuario NO se inserto!!!!");
+                JOptionPane.showMessageDialog(rootPane, "La contraseña no es igual, intente nuevamente");
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "La contraseña no es igual, intente nuevamente");
+            JOptionPane.showMessageDialog(rootPane, "Todos los campos obligatorios deben estar digitados");
         }
-    
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -345,6 +347,34 @@ public class RegistroUsuario extends javax.swing.JFrame {
         boolean v = false;
         if (contrasenia.equals(contrasenia22)) {
             v = true;
+        }
+        return v;
+    }
+
+    private void limpiar() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField9.setText("");
+        jPasswordField1.setText("");
+        jPasswordField2.setText("");
+    }
+
+    private boolean validarCampos() {
+        boolean v = true;
+        if (jTextField1.getText().equals("")) {
+            v = false;
+        } else if (jTextField2.getText().equals("")) {
+            v = false;
+        } else if (jTextField5.getText().equals("")) {
+            v = false;
+        } else if (jTextField6.getText().equals("")) {
+            v = false;
+        } else if (jTextField9.getText().equals("")) {
+            v = false;
         }
         return v;
     }
