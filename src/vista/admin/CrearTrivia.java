@@ -19,6 +19,7 @@ public class CrearTrivia extends javax.swing.JFrame {
      */
     public CrearTrivia() {
         initComponents();
+         this.setLocationRelativeTo(null);
     }
 
     /**
