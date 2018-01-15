@@ -172,6 +172,7 @@ public class Login extends javax.swing.JFrame {
                     if (contraDesencriptada.equals(contrasenia1)) {
                         MenuUsuario obj = new MenuUsuario();
                         obj.setVisible(true);
+                        this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Contraseña incorrecta!!");
                     }
