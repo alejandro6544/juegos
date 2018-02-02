@@ -16,9 +16,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import modelo.Preguntas;
 import modelo.Usuario;
 
 public class BaseDatos {
@@ -85,7 +87,7 @@ public class BaseDatos {
      * @return resultado regresa los registros generados por la consulta
      *
      */
-    public Usuario ejecutarSQLSelect(String sql) {
+    public Usuario ejecutarSQLSelectBuscarUsuario(String sql) {
         ResultSet rs;
         String idu;
         String nombre1u;
@@ -94,10 +96,10 @@ public class BaseDatos {
         String apellidou2;
         String correou;
         String contraseniau;
-       // System.out.println("esta es la con: "+contraseniau);
+        // System.out.println("esta es la con: "+contraseniau);
         String celularu;
-        boolean adminu=true;
-        Usuario obj=null;
+        boolean adminu = true;
+        Usuario obj = null;
 
         try {
             Statement sentencia = conexion.createStatement();
@@ -113,7 +115,7 @@ public class BaseDatos {
                 celularu = rs.getNString("celularu");
                 adminu = rs.getBoolean("adminu");
 
-                obj=new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraseniau, celularu, adminu);
+                obj = new Usuario(idu, nombre1u, nombre2u, apellidou1, apellidou2, correou, contraseniau, celularu, adminu);
             }
 
         } catch (SQLException ex) {
@@ -363,8 +365,8 @@ public class BaseDatos {
         if (obju.isAdminu()) {
             valor = 1;
         }
-        String sql = "INSERT INTO usuarios (idU, nombreu1, nombreu2, apellidou1, apellidou2, correou, contraseniau, celularu,adminu)"+ 
-                "VALUES('" + obju.getIdu() + "', '" + obju.getNombre1u() + "', '" + obju.getNombre2u() + "', '" + obju.getApellidou1() + "', '" + obju.getApellidou2()
+        String sql = "INSERT INTO usuarios (idU, nombreu1, nombreu2, apellidou1, apellidou2, correou, contraseniau, celularu,adminu)"
+                + "VALUES('" + obju.getIdu() + "', '" + obju.getNombre1u() + "', '" + obju.getNombre2u() + "', '" + obju.getApellidou1() + "', '" + obju.getApellidou2()
                 + "', '" + obju.getCorreou() + "', '" + obju.getContraseniau() + "', '" + obju.getCelularu() + "', " + valor + " );";
 
         if (crearConexion()) {
@@ -374,4 +376,39 @@ public class BaseDatos {
         return r;
     }
 
+    public int ejecutarSQLSelectTrivia(String sql) {
+        int idtrivia = 0;
+        String nomT = "";
+        ResultSet rs;
+
+        try {
+            Statement sentencia = conexion.createStatement();
+            rs = sentencia.executeQuery(sql);
+            while (rs.next()) {
+                idtrivia = rs.getInt("idtrivia");
+                nomT = rs.getNString("temat");
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+
+        return idtrivia;
+    }
+
+    public boolean insertarPreguntas(LinkedList<Preguntas> listaPreguntas) {
+        boolean insert = false;
+        for (int i = 0; i < listaPreguntas.size(); i++) {
+            String sql = "INSERT INTO preguntas (preguntap, respuesta1p, respuesta2p, respuesta3p, respuestacorrectap, idtpfk)"
+                    + "VALUES('" + listaPreguntas.get(i).getPregunta() + "', '" + listaPreguntas.get(i).getRespuesta1() + "', '"
+                    + listaPreguntas.get(i).getRespuesta2() + "', '" + listaPreguntas.get(i).getRespuesta3() + "', '"
+                    + listaPreguntas.get(i).getRespuestacorrecta() + "', "+listaPreguntas.get(i).getFkTrivia()+ ");";
+            if (crearConexion()) {
+                insert = ejecutarSQL(sql);
+            }
+        }
+
+        return insert;
+    }
 }

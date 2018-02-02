@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         Usuario u = null;
         if (objb.crearConexion()) {
             try {
-                u = objb.ejecutarSQLSelect(s);
+                u = objb.ejecutarSQLSelectBuscarUsuario(s);
                 if (u != null) {
                     String contraseniabd = u.getContraseniau();//Trae la contraseña encriptada
                     String contraDesencriptada = utilidades.UtilitiesJ.Desencriptar(contraseniabd); //desencripta la contraseña

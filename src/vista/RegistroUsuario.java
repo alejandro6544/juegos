@@ -274,7 +274,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         BaseDatos objb = new BaseDatos();
         String s = "Select * from usuarios where idU=333;";
         if (objb.crearConexion()) {
-            Usuario u = objb.ejecutarSQLSelect(s);
+            Usuario u = objb.ejecutarSQLSelectBuscarUsuario(s);
             //System.out.println("usuario " + u.getContraseniau());
             if (u.getContraseniau().equals("123456")) {
 

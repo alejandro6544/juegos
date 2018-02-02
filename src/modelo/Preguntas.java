@@ -31,10 +31,11 @@ public class Preguntas {
         this.rutaimagen = rutaimagen;
     }
 
-    public Preguntas(String pregunta, String respuesta1, String respuesta2, char respuestacorrecta, int fkTrivia) {
+    public Preguntas(String pregunta, String respuesta1, String respuesta2, String respuesta3, char respuestacorrecta, int fkTrivia) {
         this.pregunta = pregunta;
         this.respuesta1 = respuesta1;
         this.respuesta2 = respuesta2;
+        this.respuesta3 = respuesta3;
         this.respuestacorrecta = respuestacorrecta;
         this.fkTrivia = fkTrivia;
     }

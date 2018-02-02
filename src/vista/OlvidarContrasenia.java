@@ -187,7 +187,7 @@ public class OlvidarContrasenia extends javax.swing.JFrame {
         String sqlfind = "Select * from usuarios where idU=" + "'" + id + "';";
         BaseDatos obj = new BaseDatos();
         if (obj.crearConexion()) {
-            Usuario u = obj.ejecutarSQLSelect(sqlfind);
+            Usuario u = obj.ejecutarSQLSelectBuscarUsuario(sqlfind);
             if (u != null) {
                 JOptionPane.showMessageDialog(rootPane, "Por favor modifique la contraseña y de clic en modificar Usuario");
                 jTextField2.setText(u.getNombre1u() + " " + u.getApellidou1());
