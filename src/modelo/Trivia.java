@@ -12,6 +12,7 @@ package modelo;
 public class Trivia {
     
     private String temat;
+    private int idT;
 
     public Trivia() {
     }
@@ -20,6 +21,29 @@ public class Trivia {
         this.temat = temat;
     }
 
+    public Trivia(String temat, int idT) {
+        this.temat = temat;
+        this.idT = idT;
+    }
+    
+   /**
+     * Get the value of idT
+     *
+     * @return the value of idT
+     */
+    public int getIdT() {
+        return idT;
+    }
+
+    /**
+     * Set the value of idT
+     *
+     * @param idT new value of idT
+     */
+    public void setIdT(int idT) {
+        this.idT = idT;
+    }
+    
     /**
      * Get the value of temat
      *
