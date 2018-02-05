@@ -170,13 +170,19 @@ public class Login extends javax.swing.JFrame {
 
                     //se compara la contraseña 
                     if (contraDesencriptada.equals(contrasenia1)) {
-                        MenuUsuario obj = new MenuUsuario();
-                        obj.setVisible(true);
-                        this.dispose();
+                        if (!admin) {
+                            MenuUsuario obj = new MenuUsuario();
+                            obj.setVisible(true);
+                            this.dispose();
+                        }else{
+                            MenuAdministrador obja=new MenuAdministrador();
+                            obja.setVisible(true);
+                            this.dispose();
+                        }
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Contraseña incorrecta!!");
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña incorrectos ");
                 }
             } catch (Exception ex) {
@@ -191,9 +197,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        OlvidarContrasenia obj= new OlvidarContrasenia();
+        OlvidarContrasenia obj = new OlvidarContrasenia();
         obj.setVisible(true);
-                
+
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

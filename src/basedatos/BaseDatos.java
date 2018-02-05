@@ -364,6 +364,8 @@ public class BaseDatos {
         boolean r = false;
         if (obju.isAdminu()) {
             valor = 1;
+        }else{
+            valor = 0;
         }
         String sql = "INSERT INTO usuarios (idU, nombreu1, nombreu2, apellidou1, apellidou2, correou, contraseniau, celularu,adminu)"
                 + "VALUES('" + obju.getIdu() + "', '" + obju.getNombre1u() + "', '" + obju.getNombre2u() + "', '" + obju.getApellidou1() + "', '" + obju.getApellidou2()
