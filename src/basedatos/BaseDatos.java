@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,13 @@ import javax.imageio.ImageIO;
 import modelo.Preguntas;
 import modelo.Usuario;
 
+/**
+ * Esta clase define las conexiones a la base de datos y los métodos para el
+ * CRUD
+ *
+ * @author: David Alejandro Castro Benavides
+ * @version: 1.0
+ */
 public class BaseDatos {
 
     Connection conexion;
@@ -364,7 +372,7 @@ public class BaseDatos {
         boolean r = false;
         if (obju.isAdminu()) {
             valor = 1;
-        }else{
+        } else {
             valor = 0;
         }
         String sql = "INSERT INTO usuarios (idU, nombreu1, nombreu2, apellidou1, apellidou2, correou, contraseniau, celularu,adminu)"
@@ -405,12 +413,40 @@ public class BaseDatos {
             String sql = "INSERT INTO preguntas (preguntap, respuesta1p, respuesta2p, respuesta3p, respuestacorrectap, idtpfk)"
                     + "VALUES('" + listaPreguntas.get(i).getPregunta() + "', '" + listaPreguntas.get(i).getRespuesta1() + "', '"
                     + listaPreguntas.get(i).getRespuesta2() + "', '" + listaPreguntas.get(i).getRespuesta3() + "', '"
-                    + listaPreguntas.get(i).getRespuestacorrecta() + "', "+listaPreguntas.get(i).getFkTrivia()+ ");";
+                    + listaPreguntas.get(i).getRespuestacorrecta() + "', " + listaPreguntas.get(i).getFkTrivia() + ");";
             if (crearConexion()) {
                 insert = ejecutarSQL(sql);
             }
         }
 
         return insert;
+    }
+
+    /**
+     *
+     * Método que busca todas las trivias en la BD juegoSerio
+     *@return un hashMap con la pk de cada trivia y el nombre de la trivia
+     */
+    public HashMap<Integer, String> buscarTrivias() {
+        String sql = "Select * from trivias;";
+        HashMap<Integer, String> lt = new HashMap<>();
+        ResultSet rs;
+        String nomt;
+        int pk;
+        try {
+            Statement sentencia = conexion.createStatement();
+            rs = sentencia.executeQuery(sql);
+            while (rs.next()) {
+                pk = rs.getInt("idtrivia");
+                nomt = rs.getNString("temat");
+                lt.put(pk, nomt);
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            //return null;
+        }
+
+        return lt;
     }
 }
